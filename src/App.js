@@ -10,7 +10,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      mode : 'welcome'
+      mode : 'read'
       ,subject : {title:'WEB', sub:'world wide web!'}
       ,welcome : {title:'welcome', desc:'hello react!@!@!'}
       ,contents: [
@@ -35,20 +35,21 @@ class App extends Component{
     }
     return (
       <div className="App">
-         <Subject title={this.state.subject.title} sub={this.state.subject.sub}
-         onChangePage={function(e){
-           e.preventDefault();
-           alert('hihihihihihi');
+         <Subject title={this.state.subject.title} 
+         sub={this.state.subject.sub}
+         onChangePage={function(){
+           //alert('hihihihihihi');
+           this.setState({mode:'welcome'});
          }.bind(this)}
          ></Subject>
-         <header>
+         {/* <header>
             <h1><a href="/" onClick={function(e){
               e.preventDefault();
               this.setState({mode : 'welcome'}); //state변경
               //this.props.onChangePage;
               }.bind(this)}>{this.state.subject.title}</a></h1>
             {this.state.subject.sub}           
-        </header>
+        </header> */}
           <TOC data={this.state.contents}></TOC>
           <Content  title={_title} desc={_desc} ></Content>
       </div>
